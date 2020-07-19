@@ -1,0 +1,47 @@
+{
+  "name": "path-parser",
+  "version": "6.1.0",
+  "description": "A small utility to parse, match and generate paths",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/path-parser.esm.js",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint src test",
+    "prepare": "tsdx build",
+    "clog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint src test"
+    }
+  },
+  "author": "Thomas Roch",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/troch/path-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/troch/path-parser/issues"
+  },
+  "homepage": "https://github.com/troch/path-parser",
+  "dependencies": {
+    "search-params": "3.0.0",
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "2.0.31",
+    "@types/jest": "^24.0.25",
+    "husky": "^3.1.0",
+    "tsdx": "^0.12.1",
+    "typescript": "^3.7.4"
+  }
+}
