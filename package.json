@@ -21,11 +21,13 @@
     "express": "^4.17.1",
     "global": "^4.4.0",
     "http-proxy-middleware": "^1.0.5",
+    "knex": "^0.21.2",
     "localtunnel": "^2.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "path-parser": "^6.1.0",
+    "pg": "^8.3.0",
     "ramda": "^0.27.0",
     "sendgrid": "^5.2.3",
     "stripe": "^8.76.0"

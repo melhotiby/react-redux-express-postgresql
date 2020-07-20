@@ -1,5 +1,7 @@
 const ErrorResponse = require('../utils/ErrorResponse')
 const asyncHandler = require('../middleware/async')
+const KNEX = require('../knex')
+const { getFirst } = require('../knex/utils')
 
 const {
   SUCCESS,
@@ -14,5 +16,9 @@ const {
 exports.register = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body
 
-  res.status(SUCCESS).json({ success: true, name })
+  const query = await KNEX.raw(`select * from users`)
+  const users = getFirst(query)
+  // console.log(knex.queryBuilder().toString());
+
+  res.status(SUCCESS).json({ success: true, users })
 })
