@@ -1,13 +1,43 @@
 const express = require('express')
-const cookieSession = require('cookie-session')
-const bodyParser = require('body-parser')
+const dotenv = require('dotenv')
+const morgan = require('morgan')
+const colors = require('colors')
+const path = require('path')
+const errorHandler = require('./middleware/error')
+
+// Load env vars
+dotenv.config()
+
+const { NODE_ENV } = process.env
+
+const API_VERSION = '/api/v1'
+
+// Route files
+const auth = require('./routes/auth')
 
 const app = express()
 
-if (process.env.NODE_ENV === 'production') {
+// Body Parser
+app.use(express.json())
+
+// Dev logging middleware
+if (NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
+
+// Set Static Folder
+app.use(express.static(path.join(__dirname, './public')))
+
+// Mount routes
+app.use(`${API_VERSION}/auth`, auth)
+
+// Error Handler middleware
+app.use(errorHandler)
+
+if (NODE_ENV === 'production') {
   // Express will serve up production assets
   // like main.js and main.css
-  app.use(express.static('client/build'))
+  app.use(express.static('../client/build'))
 
   // Express will serve up the index.html
   // if the route is not recognized
@@ -19,4 +49,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const PORT = process.env.PORT || 5000
-app.listen(PORT)
+
+app.listen(
+  PORT,
+  console.log(`Server running in ${NODE_ENV} mode on port ${PORT}`.yellow.bold)
+)

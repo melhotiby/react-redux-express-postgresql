@@ -14,6 +14,7 @@
   "dependencies": {
     "@sendgrid/mail": "^7.2.1",
     "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
     "concurrently": "^5.2.0",
     "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
@@ -21,7 +22,9 @@
     "global": "^4.4.0",
     "http-proxy-middleware": "^1.0.5",
     "localtunnel": "^2.0.0",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
+    "path": "^0.12.7",
     "path-parser": "^6.1.0",
     "ramda": "^0.27.0",
     "sendgrid": "^5.2.3",
