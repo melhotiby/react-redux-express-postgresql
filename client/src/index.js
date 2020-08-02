@@ -3,20 +3,10 @@ import ReactDOM from 'react-dom'
 import logger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import { all } from 'redux-saga/effects'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { reducers, sagas } from './ducks'
 
 import App from './components/App'
-
-/* ------------- Reducers ------------- */
-import userReducer from './ducks/users'
-
-/* ------------- Sagas ------------- */
-import { usersSaga } from './ducks/users'
-
-const rootSaga = function* rootSaga() {
-  yield all([...usersSaga])
-}
 
 /* ------------- Redux Configuration ------------- */
 
@@ -45,11 +35,8 @@ const composeEnhancers =
 /* ------------- Create Store ------------- */
 
 const enhancer = composeEnhancers(...enhancers)
-const reducers = combineReducers({
-  user: userReducer
-})
 const store = createStore(reducers, {}, enhancer)
-sageMiddleware.run(rootSaga)
+sageMiddleware.run(sagas)
 
 ReactDOM.render(
   <Provider store={store}>

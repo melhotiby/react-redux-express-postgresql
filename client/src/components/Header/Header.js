@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 class Header extends Component {
   render() {
     const { user } = this.props
+    console.log(user)
 
     return (
       <nav>

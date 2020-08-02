@@ -3,6 +3,7 @@ import { Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchUser } from '../ducks/users'
 import history from '../utils/history'
+import { HOME_ROUTE } from '../routes'
 
 import Header from './Header/Header'
 import Landing from './Landing/Landing'
@@ -22,7 +23,7 @@ class App extends Component {
         <Router history={history}>
           <div className="container">
             <Header />
-            <Route exact path="/" component={Landing} />
+            <Route exact path={HOME_ROUTE} component={Landing} />
           </div>
         </Router>
       </div>

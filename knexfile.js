@@ -14,17 +14,6 @@ const {
   DATABASE_URL
 } = process.env
 
-function afterCreate(connection, callback) {
-  connection.query(
-    `
-    SET intervalstyle = iso_8601;
-    SET statement_timeout = 25000; -- milliseconds
-    SET pg_trgm.word_similarity_threshold = 0.1
-  `,
-    callback
-  )
-}
-
 const acquireConnectionTimeout = 5000 // milliseconds
 
 module.exports = {
