@@ -1,17 +1,53 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+
+import ReactDOM from 'react-dom'
+import logger from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose } from 'redux'
+
+import App from './components/App'
+import reducers from './reducers'
+import rootSaga from './sagas'
+
+/* ------------- Testing API Logic in the browser ------------- */
+
+// import axios from 'axios'
+// window.axios = axios
+
+/* ------------- Redux Configuration ------------- */
+
+const middleware = []
+const enhancers = []
+
+/* ------------- Saga Middleware ------------- */
+const sageMiddleware = createSagaMiddleware()
+middleware.push(sageMiddleware)
+
+/* ------------- Logger Middleware ------------- */
+
+middleware.push(logger)
+
+/* ------------- Assemble Middleware ------------- */
+
+enhancers.push(applyMiddleware(...middleware))
+
+/* ------------- Apply REDUX Dev tools ------------- */
+
+const composeEnhancers =
+  (typeof window !== 'undefined' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose
+
+/* ------------- Create Store ------------- */
+
+const enhancer = composeEnhancers(...enhancers)
+const store = createStore(reducers, {}, enhancer)
+sageMiddleware.run(rootSaga)
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+)

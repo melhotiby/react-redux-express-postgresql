@@ -4,16 +4,15 @@ const morgan = require('morgan')
 const colors = require('colors')
 const path = require('path')
 const errorHandler = require('./middleware/error')
+const API_VERSION = require('./utils/version')
 
 // Load env vars
 dotenv.config()
 
 const { NODE_ENV } = process.env
 
-const API_VERSION = '/api/v1'
-
 // Route files
-const auth = require('./routes/auth')
+const users = require('./routes/users')
 
 const app = express()
 
@@ -29,7 +28,7 @@ if (NODE_ENV === 'development') {
 app.use(express.static(path.join(__dirname, './public')))
 
 // Mount routes
-app.use(`${API_VERSION}/auth`, auth)
+app.use(`/api/${API_VERSION}/users`, users)
 
 // Error Handler middleware
 app.use(errorHandler)

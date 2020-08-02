@@ -10,15 +10,14 @@ const {
   UNAUTHORIZED
 } = require('../utils/StatusCodes')
 
-// @desc   Register User
-// @route  POST /api/v1/auth/register
+// @desc   Get all users
+// @route  GET /api/v1/users
 // @access Public
-exports.register = asyncHandler(async (req, res, next) => {
+exports.getUsers = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body
 
   const query = await KNEX.raw(`select * from users`)
   const users = getFirst(query)
-  // console.log(knex.queryBuilder().toString());
 
   res.status(SUCCESS).json({ success: true, users })
 })
