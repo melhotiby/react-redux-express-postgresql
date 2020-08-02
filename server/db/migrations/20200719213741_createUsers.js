@@ -7,6 +7,8 @@ exports.up = knex => {
       .unique()
       .index()
     t.string('password')
+    t.string('firstName')
+    t.string('lastName')
     t.string('email')
       .unique()
       .index()

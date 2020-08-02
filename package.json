@@ -8,6 +8,7 @@
     "client": "cd client && yarn start",
     "db:make": "knex migrate:make",
     "db:create": "node ./server/db/create.js",
+    "db:seed": "knex seed:run",
     "db:migrate": "knex migrate:latest",
     "db:rollback": "knex migrate:rollback",
     "webhook": "./sendgrid_webhook.sh",
@@ -17,6 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@sendgrid/mail": "^7.2.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "colors": "^1.4.0",
     "concurrently": "^5.2.0",
@@ -35,5 +37,8 @@
     "ramda": "^0.27.0",
     "sendgrid": "^5.2.3",
     "stripe": "^8.76.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0"
   }
 }
