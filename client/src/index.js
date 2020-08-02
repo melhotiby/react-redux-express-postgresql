@@ -1,19 +1,22 @@
 import React from 'react'
-
 import ReactDOM from 'react-dom'
 import logger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import { all } from 'redux-saga/effects'
 
 import App from './components/App'
-import reducers from './reducers'
-import rootSaga from './sagas'
 
-/* ------------- Testing API Logic in the browser ------------- */
+/* ------------- Reducers ------------- */
+import userReducer from './ducks/users'
 
-// import axios from 'axios'
-// window.axios = axios
+/* ------------- Sagas ------------- */
+import { usersSaga } from './ducks/users'
+
+const rootSaga = function* rootSaga() {
+  yield all([...usersSaga])
+}
 
 /* ------------- Redux Configuration ------------- */
 
@@ -42,6 +45,9 @@ const composeEnhancers =
 /* ------------- Create Store ------------- */
 
 const enhancer = composeEnhancers(...enhancers)
+const reducers = combineReducers({
+  user: userReducer
+})
 const store = createStore(reducers, {}, enhancer)
 sageMiddleware.run(rootSaga)
 

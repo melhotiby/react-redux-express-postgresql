@@ -2,8 +2,7 @@ import React from 'react'
 
 const Landing = () => (
   <div style={{ textAlign: 'center' }}>
-    <h1>Emaily</h1>
-    Collect feedback for your application
+    <h1>My Frontend</h1>
   </div>
 )
 
