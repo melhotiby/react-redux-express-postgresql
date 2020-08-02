@@ -6,10 +6,10 @@
     "start": "node ./server/index.js",
     "server": "nodemon ./server/index.js",
     "client": "cd client && yarn start",
-    "migrate:make": "knex migrate:make",
-    "db:migrate": "knex migrate:latest",
+    "db:make": "knex migrate:make",
     "db:create": "node ./server/db/create.js",
-    "migrate:rollback": "knex migrate:rollback",
+    "db:migrate": "knex migrate:latest",
+    "db:rollback": "knex migrate:rollback",
     "webhook": "./sendgrid_webhook.sh",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
     "heroku-postbuild": "cd client && NPM_CONFIG_PRODUCTION=false yarn install && yarn build"
