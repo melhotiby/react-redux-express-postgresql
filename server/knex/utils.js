@@ -1,10 +1,13 @@
 const { compose, head, prop } = require('ramda')
 
+const getAll = prop('rows')
+
 const getFirst = compose(
   head,
-  prop('rows')
+  getAll
 )
 
 module.exports = {
-  getFirst
+  getFirst,
+  getAll
 }
