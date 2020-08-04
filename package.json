@@ -16,7 +16,8 @@
     "heroku-postbuild": "cd client && NPM_CONFIG_PRODUCTION=false yarn install && yarn build"
   },
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "yarn": "1.19.1"
   },
   "license": "MIT",
   "dependencies": {
