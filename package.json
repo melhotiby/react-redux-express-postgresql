@@ -39,9 +39,7 @@
     "path-parser": "^6.1.0",
     "pg": "^8.3.0",
     "ramda": "^0.27.0",
-    "sendgrid": "^5.2.3"
-  },
-  "devDependencies": {
+    "sendgrid": "^5.2.3",
     "faker": "^4.1.0"
   }
 }
