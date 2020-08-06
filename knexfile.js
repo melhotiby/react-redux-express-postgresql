@@ -39,10 +39,10 @@ module.exports = {
     client: 'pg',
     connection: DATABASE_URL,
     migrations: {
-      directory: __dirname + '/db/migrations'
+      directory: __dirname + '/server/db/migrations'
     },
     seeds: {
-      directory: __dirname + '/db/seeds/production'
+      directory: __dirname + '/server/db/seeds/development'
     }
   }
 }
