@@ -1,4 +1,4 @@
-const ErrorResponse = require('../utils/ErrorResponse')
+const ErrorResponse = require('../utils/errorResponse')
 const asyncHandler = require('../middleware/async')
 const KNEX = require('../knex')
 const { getAll } = require('../knex/utils')
