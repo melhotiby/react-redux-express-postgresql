@@ -8,7 +8,7 @@ const {
   BAD_REQUEST,
   NOT_FOUND,
   UNAUTHORIZED
-} = require('../utils/StatusCodes')
+} = require('../utils/StatusCodess')
 
 // @desc   Get all users
 // @route  GET /api/v1/users

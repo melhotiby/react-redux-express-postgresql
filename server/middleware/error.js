@@ -3,7 +3,7 @@ const {
   INTERNAL_SERVER,
   NOT_FOUND,
   BAD_REQUEST
-} = require('../utils/StatusCodes')
+} = require('../utils/StatusCodesrr')
 const ErrorResponse = require('../utils/ErrorResponse')
 
 const errorHandler = (err, req, res, next) => {
