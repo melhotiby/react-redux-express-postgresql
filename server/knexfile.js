@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 // Load env vars
 dotenv.config()
 
-require('./server/knex/pg')
+require('./knex/pg')
 
 const {
   DB_USER,
@@ -28,10 +28,10 @@ module.exports = {
       port: DB_PORT
     },
     migrations: {
-      directory: __dirname + '/server/db/migrations'
+      directory: __dirname + '/db/migrations'
     },
     seeds: {
-      directory: __dirname + '/server/db/seeds/development'
+      directory: __dirname + '/db/seeds/development'
     }
   },
   production: {
@@ -39,10 +39,10 @@ module.exports = {
     client: 'pg',
     connection: DATABASE_URL,
     migrations: {
-      directory: __dirname + '/server/db/migrations'
+      directory: __dirname + '/db/migrations'
     },
     seeds: {
-      directory: __dirname + '/server/db/seeds/development'
+      directory: __dirname + '/db/seeds/development'
     }
   }
 }

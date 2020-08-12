@@ -3,21 +3,17 @@
   "version": "1.0.0",
   "main": "./server/index.js",
   "scripts": {
-    "start": "node ./server/index.js",
-    "server": "nodemon ./server/index.js",
-    "client": "cd client && yarn start",
+    "start": "node index.js",
+    "dev": "nodemon",
     "db:make": "knex migrate:make",
-    "db:create": "node ./server/db/create.js",
+    "db:create": "node ./db/create.js",
     "db:seed": "knex seed:run",
     "db:migrate": "knex migrate:latest",
-    "db:rollback": "knex migrate:rollback",
-    "webhook": "./sendgrid_webhook.sh",
-    "dev": "concurrently \"yarn server\" \"yarn client\"",
-    "heroku-postbuild": "cd client && NPM_CONFIG_PRODUCTION=false yarn install && yarn build"
+    "db:rollback": "knex migrate:rollback"
   },
   "engines": {
     "node": "12.x",
-    "yarn": "1.19.1"
+    "yarn": "1.22.x"
   },
   "license": "MIT",
   "dependencies": {

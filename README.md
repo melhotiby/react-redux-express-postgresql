@@ -1,4 +1,4 @@
-# Node/Express/React/Redux/postgresql Fullstack application starter.
+# Express/React/Redux/PostgreSQL Dockerized Fullstack application starter.
 
 This repository contains a production ready template which includes the following
 
@@ -12,6 +12,8 @@ This repository contains a production ready template which includes the followin
 - [Postgresql](https://www.postgresql.org/)
 - [knex](http://knexjs.org/)
 - [Ramda](https://ramdajs.com/docs/#)
+- [Docker](https://www.docker.com/)
+- [NGINX](https://www.nginx.com/)
 
 ---
 
@@ -19,42 +21,34 @@ This repository contains a production ready template which includes the followin
 
 For initial setup you will need to:
 
-Copy the `.env.example` to `.env` and then update the `.env` that this command generates with your database postgresql username and password
+Copy the server `.env.example` to `.env`
 
 ```sh
-cp -n .env{.example,}
+cp -n server/.env{.example,}
 ```
 
-Install the node packages for the server and client
+Start all the services with docker
 
 ```sh
-nvm use
-yarn install
-cd client
-yarn install
-cd ..
+docker-compose up --build
 ```
 
 Create the new database table
 
 ```sh
-yarn db:create
+docker-compose run --rm api yarn db:create
 ```
 
 Migrate the database
 
 ```sh
-yarn db:migrate
+docker-compose run --rm api yarn db:migrate
 ```
 
 Seed the database
 
 ```sh
-yarn db:seed
+docker-compose run --rm api yarn db:seed
 ```
 
-Start the server and client
-
-```sh
-yarn dev
-```
+Visit [localhost:3000](http://localhost:3000/)
