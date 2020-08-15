@@ -57,4 +57,10 @@ Seed the database
 docker-compose run --rm api yarn db:seed
 ```
 
+Running tests
+
+```sh
+docker-compose run --rm client yarn test
+```
+
 Visit [localhost:3000](http://localhost:3000/)
