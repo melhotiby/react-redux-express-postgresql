@@ -1,0 +1,21 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f ./client/Dockerfile.dev -t elhotiby1/react-redux-express-postgresql ./client
+
+script:
+  - docker run -e CI=true elhotiby1/react-redux-express-postgresql yarn test
+
+after_success:
+  - docker build -t elhotiby1/multi-client ./client
+  - docker build -t elhotiby1/multi-server ./server
+  - docker build -t elhotiby1/multi-nginx ./nginx
+  # Login into docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login - u "$DOCKER_ID" --password-stdin
+  # Pushing images to dockerhub
+  - docker push elhotiby1/multi-client
+  - docker push elhotiby1/multi-server
+  - docker push elhotiby1/multi-nginx
