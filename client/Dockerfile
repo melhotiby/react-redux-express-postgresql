@@ -13,4 +13,5 @@ RUN yarn build
 
 FROM nginx
 EXPOSE 3000
-COPY ./nginx/defaul.prod.conf /etc/nginx/conf.g/default.conf
+COPY ./nginx/default.prod.conf /etc/nginx/conf.g/default.conf
+COPY --from=builder /app/build usr/share/nginx/html
