@@ -1,4 +1,5 @@
 const dotenv = require('dotenv')
+const colors = require('colors')
 const KNEX = require('knex')
 
 // Load env vars
@@ -20,9 +21,9 @@ async function createDatabase() {
 
   try {
     await knex.raw(`CREATE DATABASE ${DB_DATABASE}`)
-    console.log(`Created database ${DB_DATABASE}`)
+    console.log(`Created database ${DB_DATABASE}`.green.inverse)
   } catch (e) {
-    console.log(e.message)
+    console.log(e.message.magenta.inverse)
   } finally {
     await knex.destroy()
   }

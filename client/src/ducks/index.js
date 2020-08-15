@@ -8,7 +8,7 @@ import userReducer from './users'
 import { usersSaga } from './users'
 
 export const reducers = combineReducers({
-  user: userReducer
+  users: userReducer
 })
 
 export const sagas = function* rootSaga() {

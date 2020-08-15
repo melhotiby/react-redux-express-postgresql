@@ -27,6 +27,12 @@ Copy the server `.env.example` to `.env`
 cp -n server/.env{.example,}
 ```
 
+Copy the server `docker-compose.override.example.yml` to `docker-compose.override.yml` for docker compose overrides
+
+```sh
+cp -n docker-compose.override{.example,}.yml
+```
+
 Start all the services with docker
 
 ```sh

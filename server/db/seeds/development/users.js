@@ -12,6 +12,7 @@ const createOne = async () => {
   return await {
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
+    avatarUrl: faker.image.avatar(),
     username: faker.internet.userName(),
     email: faker.internet.email(),
     password: await encyptPassword('password')

@@ -9,6 +9,7 @@ exports.up = knex => {
     t.string('password')
     t.string('firstName')
     t.string('lastName')
+    t.string('avatarUrl')
     t.string('email')
       .unique()
       .index()

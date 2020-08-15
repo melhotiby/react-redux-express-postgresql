@@ -21,3 +21,23 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
 
   res.status(SUCCESS).json({ success: true, users })
 })
+
+// @desc   Delete a User
+// @route  DELETE /api/v1/users
+// @access Public
+exports.deleteUser = asyncHandler(async (req, res, next) => {
+  const { id } = req.params
+
+  if (id) {
+    await KNEX('users')
+      .where('id', id)
+      .del()
+
+    const query = await KNEX.raw(`select * from users`)
+    const users = getAll(query)
+
+    return res.status(SUCCESS).json({ success: true, users })
+  }
+
+  return res.status(BAD_REQUEST).json({ success: false, users: [] })
+})
