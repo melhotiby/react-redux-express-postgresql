@@ -19,3 +19,16 @@ after_success:
   - docker push elhotiby1/multi-client
   - docker push elhotiby1/multi-server
   - docker push elhotiby1/multi-nginx
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'multi-docker-app'
+  env: 'MultiDockerApp-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-155684741557'
+  bucket_path: 'multi-docker-app'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
