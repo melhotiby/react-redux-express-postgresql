@@ -24,11 +24,11 @@ services:
       - /app/node_modules
       - ./server:/app
     environment:
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
-      - PGPORT=5432
+      - DB_USER=postgres
+      - DB_HOST=postgres
+      - DB_DATABASE=postgres
+      - DB_PASSWORD=postgres_password
+      - DB_PORT=5432
   client:
     stdin_open: true
     build:
