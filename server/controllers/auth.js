@@ -107,6 +107,13 @@ exports.login = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Invalid Credentials`, UNAUTHORIZED))
   }
 
+  // Update the lastLogin to the current timestamp
+  await knex('users')
+    .where('id', id)
+    .update({
+      lastLogin: knex.fn.now()
+    })
+
   // Create Token
   const token = getSignedJwdToken(id)
 
