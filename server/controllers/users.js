@@ -16,7 +16,7 @@ const {
 exports.getUsers = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body
 
-  const query = await KNEX.raw(`select * from users`)
+  const query = await knex.raw(`select * from users`)
   const users = getAll(query)
 
   res.status(SUCCESS).json({ success: true, users })
@@ -33,7 +33,7 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
       .where('id', id)
       .del()
 
-    const query = await KNEX.raw(`select * from users`)
+    const query = await knex.raw(`select * from users`)
     const users = getAll(query)
 
     return res.status(SUCCESS).json({ success: true, users })

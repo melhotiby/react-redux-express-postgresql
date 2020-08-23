@@ -1,6 +1,6 @@
 const dotenv = require('dotenv')
 const colors = require('colors')
-const KNEX = require('knex')
+const knex = require('knex')
 
 // Load env vars
 dotenv.config()
@@ -8,7 +8,7 @@ dotenv.config()
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT } = process.env
 
 async function createDatabase() {
-  const knex = KNEX({
+  const knex = knex({
     client: 'pg',
     connection: {
       host: DB_HOST,
