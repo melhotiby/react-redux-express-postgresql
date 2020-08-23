@@ -25,8 +25,10 @@
     "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "global": "^4.4.0",
     "http-proxy-middleware": "^1.0.5",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.2",
     "localtunnel": "^2.0.0",
     "morgan": "^1.10.0",
@@ -35,7 +37,6 @@
     "path-parser": "^6.1.0",
     "pg": "^8.3.0",
     "ramda": "^0.27.0",
-    "sendgrid": "^5.2.3",
-    "faker": "^4.1.0"
+    "sendgrid": "^5.2.3"
   }
 }

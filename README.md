@@ -63,4 +63,15 @@ Running tests
 docker-compose run --rm client yarn test
 ```
 
+SSH into elastic beanstalk and run commands
+
+```sh
+ssh -i docker.pem ec2-user@<PUBLIC_IP_ADDRESS>
+sudo su
+docker ps
+docker exec -it <DOCKER_INSTANCE_FOR_elhotiby1/multi-server> docker-entrypoint.sh sh
+yarn db:migrate
+yarn db:seed
+```
+
 Visit [localhost:3000](http://localhost:3000/)

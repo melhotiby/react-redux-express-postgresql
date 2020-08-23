@@ -5,14 +5,7 @@ dotenv.config()
 
 require('./knex/pg')
 
-const {
-  DB_USER,
-  DB_PASSWORD,
-  DB_HOST,
-  DB_DATABASE,
-  DB_PORT,
-  DATABASE_URL
-} = process.env
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT } = process.env
 
 const acquireConnectionTimeout = 5000 // milliseconds
 

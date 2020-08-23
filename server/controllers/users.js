@@ -1,6 +1,6 @@
 const ErrorResponse = require('../utils/errorResponse')
-const asyncHandler = require('../middleware/async')
-const KNEX = require('../knex')
+const { async: asyncHandler } = require('../middleware')
+const knex = require('../knex')
 const { getAll } = require('../knex/utils')
 
 const {
@@ -12,7 +12,7 @@ const {
 
 // @desc   Get all users
 // @route  GET /api/v1/users
-// @access Public
+// @access Private
 exports.getUsers = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body
 
@@ -24,12 +24,12 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
 
 // @desc   Delete a User
 // @route  DELETE /api/v1/users
-// @access Public
+// @access Private
 exports.deleteUser = asyncHandler(async (req, res, next) => {
   const { id } = req.params
 
   if (id) {
-    await KNEX('users')
+    await knex('users')
       .where('id', id)
       .del()
 

@@ -4,7 +4,7 @@ const { call, times } = require('ramda')
 const colors = require('colors')
 const dotenv = require('dotenv')
 
-const encyptPassword = require('../../../utils/encrypt')
+const { encyptPassword } = require('../../../utils/auth')
 
 const COUNT = 100
 const tableName = 'users'
